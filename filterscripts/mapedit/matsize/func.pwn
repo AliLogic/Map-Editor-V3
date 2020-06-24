@@ -8,7 +8,7 @@ GetMaterialSizeName(materialsize, name[], name_size) {
     }
 }
 
-GetMaterialSize(search[]) {
+GetMaterialSize(const search[]) {
     new size = INVALID_MATERIAL_SIZE;
     if( !sscanf(search, "i", size) ) {
         return size;

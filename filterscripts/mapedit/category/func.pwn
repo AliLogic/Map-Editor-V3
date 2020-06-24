@@ -182,7 +182,7 @@ GetTextureCategoryName(categoryid, name[], name_size) {
     return category_found;
 }
 
-FindModelCategories(result[], result_size, search[], offset, &max_offset) {
+FindModelCategories(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {
@@ -230,7 +230,7 @@ FindModelCategories(result[], result_size, search[], offset, &max_offset) {
     return rows_added;
 }
 
-FindVehicleCategories(result[], result_size, search[], offset, &max_offset) {
+FindVehicleCategories(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {
@@ -278,7 +278,7 @@ FindVehicleCategories(result[], result_size, search[], offset, &max_offset) {
     return rows_added;
 }
 
-FindSkinCategories(result[], result_size, search[], offset, &max_offset) {
+FindSkinCategories(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {
@@ -326,7 +326,7 @@ FindSkinCategories(result[], result_size, search[], offset, &max_offset) {
     return rows_added;
 }
 
-FindTextureCategories(result[], result_size, search[], offset, &max_offset) {
+FindTextureCategories(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

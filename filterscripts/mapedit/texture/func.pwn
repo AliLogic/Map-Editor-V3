@@ -49,7 +49,7 @@ GetTextureData(textureid, &modelid, txd[], txd_size, name[], name_size) {
     return 1;
 }
 
-FindTextures(result[], result_size, search[], categoryid, offset, &max_offset) {
+FindTextures(result[], result_size, const search[], categoryid, offset, &max_offset) {
     new rows_added;
 
     if( categoryid == INVALID_CATEGORY_ID ) {

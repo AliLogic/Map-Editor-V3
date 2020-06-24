@@ -58,18 +58,18 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
     if( !playerobject && objectid == GetPlayerEditObject(playerid) ) {
         switch(response) {
             case EDIT_RESPONSE_FINAL: {
-                SetObjectPos(objectid, fX, fY, fZ);
-                SetObjectRot(objectid, fRotX, fRotY, fRotZ);
+                SetDynamicObjectPos(objectid, fX, fY, fZ);
+                SetDynamicObjectRot(objectid, fRotX, fRotY, fRotZ);
                 ShowObjectDialog(playerid, DIALOGID_OBJECT_MAIN);
             }
             case EDIT_RESPONSE_CANCEL: {
-                SetObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
-                SetObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
+                SetDynamicObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
+                SetDynamicObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
                 ShowObjectDialog(playerid, DIALOGID_OBJECT_MAIN);
             }
             case EDIT_RESPONSE_UPDATE: {
-                SetObjectPos(objectid, fX, fY, fZ);
-                SetObjectRot(objectid, fRotX, fRotY, fRotZ);
+                SetDynamicObjectPos(objectid, fX, fY, fZ);
+                SetDynamicObjectRot(objectid, fRotX, fRotY, fRotZ);
             }
         }
 
@@ -108,7 +108,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
             switch(listitem) {
                 case LISTITEM_OBJECT_GOTO: {
                     new Float:x, Float:y, Float:z;
-                    GetObjectPos(objectid, x, y, z);
+                    GetDynamicObjectPos(objectid, x, y, z);
                     if( g_CamModeData[playerid][CAMMODE_DATA_TOGGLE] ) {
                         StopPlayerObject(playerid, g_CamModeData[playerid][CAMMODE_DATA_POID]);
                         SetPlayerObjectPos(playerid, g_CamModeData[playerid][CAMMODE_DATA_POID], x, y, z);
@@ -119,14 +119,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 case LISTITEM_OBJECT_GET: {
                     new Float:x, Float:y, Float:z;
                     GetPlayerPos(playerid, x, y, z);
-                    SetObjectPos(objectid, x, y, z);
+                    SetDynamicObjectPos(objectid, x, y, z);
                 }
                 case LISTITEM_OBJECT_COORD: {
                     return ShowObjectDialog(playerid, DIALOGID_OBJECT_COORD), 1;
                 }
                 case LISTITEM_OBJECT_MOVE: {
                     if( g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] == ID_TYPE_NONE ) {
-                        GetObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
+                        GetDynamicObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
                         GetObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
 
                         EditObject(playerid, objectid);
@@ -241,7 +241,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     rz = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_RZ];
                 }
                 default: {
-                    GetObjectPos(objectid, x, y, z);
+                    GetDynamicObjectPos(objectid, x, y, z);
                     GetObjectRot(objectid, rx, ry, rz);
                 }
             }
@@ -274,8 +274,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     ApplyObjectAttachData(objectid);
                 }
                 default: {
-                    SetObjectPos(objectid, x, y, z);
-                    SetObjectRot(objectid, rx, ry, rz);
+                    SetDynamicObjectPos(objectid, x, y, z);
+                    SetDynamicObjectRot(objectid, rx, ry, rz);
                 }
             }
 

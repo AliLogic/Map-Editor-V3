@@ -91,15 +91,15 @@ ApplyObjectMaterialIndexData(objectid, materialindex) {
 
             GetTextureData(textureid, modelid, g_TextureTXDString, sizeof g_TextureTXDString, g_TextureNameString, sizeof g_TextureNameString);
 
-            SetObjectMaterial(objectid, materialindex, modelid, g_TextureTXDString, g_TextureNameString, g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_COLOR][materialindex]);
+            SetDynamicObjectMaterial(objectid, materialindex, modelid, g_TextureTXDString, g_TextureNameString, g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_COLOR][materialindex]);
         }
         case MATERIALINDEX_TYPE_TEXT: {
             strunpack(g_ObjectTextString, g_ObjectText[objectid-1][materialindex], MAX_OBJECT_TEXT+1);
             strunpack(g_FontString, g_ObjectFont[objectid-1][materialindex], MAX_FONTNAME_LEN+1);
 
-            SetObjectMaterialText(objectid,
-                g_ObjectTextString,
+            SetDynamicObjectMaterialText(objectid,
                 materialindex,
+                g_ObjectTextString,
                 g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_SIZE][materialindex],
                 g_FontString,
                 g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_FONTSIZE][materialindex],
@@ -191,7 +191,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
         ;
 
         if( isvalid_attachto_object ) {
-            GetObjectPos(attachtoid, att_x,  att_y,  att_z);
+            GetDynamicObjectPos(attachtoid, att_x,  att_y,  att_z);
             GetObjectRot(attachtoid, att_rx, att_ry, att_rz);
         } else if( isvalid_attachto_vehicle ) {
             GetVehiclePos(attachtoid, att_x, att_y, att_z);
@@ -224,7 +224,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
         ry = att_ry + off_ry;
         rz = att_rz + off_rz;
     } else {
-        GetObjectPos(copy_objectid, x, y, z);
+        GetDynamicObjectPos(copy_objectid, x, y, z);
         GetObjectRot(copy_objectid, rx, ry, rz);
     }
 
@@ -632,7 +632,7 @@ ShowObjectDialog(playerid, dialogid) {
 
             new Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz;
             if( g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] == ID_TYPE_NONE ) {
-                GetObjectPos(objectid, x, y, z);
+                GetDynamicObjectPos(objectid, x, y, z);
                 GetObjectRot(objectid, rx, ry, rz);
             } else {
                 x = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X];
@@ -742,7 +742,7 @@ ShowObjectDialog(playerid, dialogid) {
     return 1;
 }
 
-FindObjects(result[], result_size, search[], offset, &max_offset) {
+FindObjects(result[], result_size, const search[], offset, &max_offset) {
     new
         rows_found,
         rows_added,

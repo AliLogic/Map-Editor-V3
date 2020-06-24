@@ -45,7 +45,7 @@ LoadModelCache() {
     db_free_result(g_DBResult);
 }
 
-FindModels(result[], result_size, search[], categoryid, offset, &max_offset) {
+FindModels(result[], result_size, const search[], categoryid, offset, &max_offset) {
     new added_rows;
 
     if( categoryid == INVALID_CATEGORY_ID ) {

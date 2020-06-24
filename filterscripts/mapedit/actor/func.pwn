@@ -244,7 +244,7 @@ RecreateActor(copy_actorid, Float:a) {
     return paste_actorid;
 }
 
-FindActors(result[], result_size, search[], offset, &max_offset) {
+FindActors(result[], result_size, const search[], offset, &max_offset) {
     new
         rows_found,
         rows_added,

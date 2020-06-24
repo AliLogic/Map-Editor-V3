@@ -340,7 +340,7 @@ GetSelectListSearch(playerid, search[], search_size) {
     return 1;
 }
 
-SetSelectListSearch(playerid, search[]) {
+SetSelectListSearch(playerid, const search[]) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_SELECTLIST_OBJECT: {
             strpack(g_SelectObjListData[playerid][SELECTLIST_DATA_SEARCH], search, MAX_SEARCH_LEN+1);

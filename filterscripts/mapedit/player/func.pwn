@@ -61,7 +61,7 @@ GetPlayerNearestObject(playerid, Float:max_distance) {
             continue;
         }
 
-        GetObjectPos(objectid, x, y, z);
+        GetDynamicObjectPos(objectid, x, y, z);
         distance = GetPlayerDistanceFromPoint(playerid, x, y, z);
 
         if( distance < near_distance ) {

@@ -22,7 +22,7 @@ GetSkinName(skinid, name[], name_size) {
     return 1;
 }
 
-FindSkins(result[], result_size, search[], categoryid, offset, &max_offset) {
+FindSkins(result[], result_size, const search[], categoryid, offset, &max_offset) {
     new rows_added;
 
     if( categoryid == INVALID_CATEGORY_ID ) {

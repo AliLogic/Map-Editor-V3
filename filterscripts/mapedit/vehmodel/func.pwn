@@ -29,7 +29,7 @@ GetVehicleModelName(modelid, name[], name_size) {
     return 1;
 }
 
-FindVehicleModels(result[], result_size, search[], categoryid, offset, &max_offset) {
+FindVehicleModels(result[], result_size, const search[], categoryid, offset, &max_offset) {
     new rows_added;
 
     if( categoryid == INVALID_CATEGORY_ID ) {

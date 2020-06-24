@@ -43,7 +43,7 @@ GetMapName(mapid, name[], name_size) {
     return mapfound;
 }
 
-FindMaps(result[], result_size, search[], offset, &max_offset) {
+FindMaps(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

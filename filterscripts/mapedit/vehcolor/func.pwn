@@ -29,7 +29,7 @@ GetVehicleColorName(colorid, name[], name_size) {
     return format(name, name_size, "Unknown Color"), 0;
 }
 
-FindVehicleColors(result[], result_size, search[], offset, &max_offset) {
+FindVehicleColors(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

@@ -1,4 +1,4 @@
-FindAnimations(result[], result_size, search[], offset, &max_offset) {
+FindAnimations(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

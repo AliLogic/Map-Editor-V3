@@ -1092,7 +1092,7 @@ GetCategoryManagerSearch(playerid, bool:window, search[], search_size) {
     return 1;
 }
 
-SetCategoryManagerSearch(playerid, bool:window, search[]) {
+SetCategoryManagerSearch(playerid, bool:window, const search[]) {
     switch( window ) {
         case CATMANAGER_WINDOW_ALL: {
             strpack(g_CatManagerData[playerid][CATMANAGER_DATA_SEARCH_ALL], search, MAX_SEARCH_LEN+1);

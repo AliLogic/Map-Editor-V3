@@ -28,7 +28,7 @@ ShowMapLoadDialog(playerid, dialogid) {
     return 1;
 }
 
-mapload_CreateVarname(id, idtype, varname[]) {
+mapload_CreateVarname(id, idtype, const varname[]) {
     switch(idtype) {
         case ID_TYPE_OBJECT: {
             if(l_ObjectsAdded >= MAX_OBJECTS) {
@@ -64,7 +64,7 @@ mapload_CreateVarname(id, idtype, varname[]) {
     return 1;
 }
 
-mapload_GetVarname(idtype, varname[]) {
+mapload_GetVarname(idtype, const varname[]) {
     new packed_varname[MAX_MAPLOAD_VARNAME+1];
 
     strpack(packed_varname, varname, sizeof packed_varname);
@@ -296,11 +296,11 @@ MapLoad(
             actors_loaded ++;
         }
 
-        else if( strfind(func, "SetObjectMaterialText") != -1 ) {
+        else if( strfind(func, "SetDynamicObjectMaterialText") != -1 ) {
             static
                 varname[MAX_MAPLOAD_VARNAME+1],
-                text[100],
                 matindex,
+                text[100],
                 matsize_name[100],
                 matsize_int,
                 font[100],
@@ -313,8 +313,8 @@ MapLoad(
             ;
 
             if(
-                sscanf(params, "p<,>s[31]s[100]I(0)S(90)[100]S(Arial)[100]I(24)I(1)H(0xFFFFFFFF)H(0x0)I(0)", varname, text, matindex, matsize_name, font, fontsize, isbold, fontcolor, backcolor, alignment) &&
-                sscanf(params, "p<,>s[31]s[100]I(0)S(90)[100]S(Arial)[100]I(24)I(1)I(-1)I(0)I(0)",           varname, text, matindex, matsize_name, font, fontsize, isbold, fontcolor, backcolor, alignment)
+                sscanf(params, "p<,>s[31]I(0)s[100]S(90)[100]S(Arial)[100]I(24)I(1)H(0xFFFFFFFF)H(0x0)I(0)", varname, text, matindex, matsize_name, font, fontsize, isbold, fontcolor, backcolor, alignment) &&
+                sscanf(params, "p<,>s[31]I(0)s[100]S(90)[100]S(Arial)[100]I(24)I(1)I(-1)I(0)I(0)",           varname, text, matindex, matsize_name, font, fontsize, isbold, fontcolor, backcolor, alignment)
             ) {
                 continue;
             }
@@ -351,7 +351,7 @@ MapLoad(
             ApplyObjectMaterialIndexData(objectid, matindex);
         }
 
-        else if( strfind(func, "SetObjectMaterial") != -1 ) {
+        else if( strfind(func, "SetDynamicObjectMaterial") != -1 ) {
             static
                 varname[MAX_MAPLOAD_VARNAME+1],
                 matindex,

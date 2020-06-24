@@ -29,7 +29,7 @@ GetModelColorName(colorid, name[], name_size) {
     return format(name, name_size, "Unknown Color"), 0;
 }
 
-FindModelColors(result[], result_size, search[], offset, &max_offset) {
+FindModelColors(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

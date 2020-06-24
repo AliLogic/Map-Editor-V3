@@ -1,8 +1,9 @@
 #include <a_samp>
 #include <sscanf2>
 #include <strlib> // Slice's strlib (NOT WESTIE'S!)
+#include <streamer>
 
-native IsValidVehicle(vehicleid);
+//native IsValidVehicle(vehicleid);
 
 #pragma dynamic 19100 // To avoid warnings at compiling
 

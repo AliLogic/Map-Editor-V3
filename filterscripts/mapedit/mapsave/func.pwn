@@ -113,7 +113,7 @@ SaveMap(
             Float:rz
         ;
 
-        GetObjectPos(objectid, x, y, z);
+        GetDynamicObjectPos(objectid, x, y, z);
         GetObjectRot(objectid, rx, ry, rz);
         strunpack(g_CommentString, g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], MAX_COMMENT_LEN+1);
 
@@ -137,7 +137,7 @@ SaveMap(
                     GetTextureData(textureid, modelid, txd, sizeof txd, name, sizeof name);
 
                     format(write_string, sizeof write_string,
-                        "SetObjectMaterial(g_Object[%i], %i, %i, \"%s\", \"%s\", 0x%08x);\r\n",    o, materialindex, modelid, txd, name, g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_COLOR][materialindex]
+                        "SetDynamicObjectMaterial(g_Object[%i], %i, %i, \"%s\", \"%s\", 0x%08x);\r\n",    o, materialindex, modelid, txd, name, g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_COLOR][materialindex]
                     );
                     fwrite(file_handle, write_string);
                 }
@@ -146,10 +146,11 @@ SaveMap(
                     strunpack(g_FontString, g_ObjectFont[objectid-1][materialindex], MAX_FONTNAME_LEN+1);
                     GetMaterialSizeName( g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_SIZE][materialindex], g_MaterialSizeString, sizeof g_MaterialSizeString );
 
+
                     format(write_string, sizeof write_string,
-                        "SetObjectMaterialText(g_Object[%i], \"%s\", %i, %s, \"%s\", %i, %i, 0x%08x, 0x%08x, %i);\r\n", o,
-                        g_ObjectTextString,
+                        "SetDynamicObjectMaterialText(g_Object[%i], %i, \"%s\", %s, \"%s\", %i, %i, 0x%08x, 0x%08x, %i);\r\n", o,
                         materialindex,
+                        g_ObjectTextString,
                         g_MaterialSizeString,
                         g_FontString,
                         g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_FONTSIZE][materialindex],

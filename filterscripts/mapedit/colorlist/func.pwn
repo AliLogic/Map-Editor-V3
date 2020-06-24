@@ -277,7 +277,7 @@ GetColorListSearch(playerid, search[], search_size) {
     return 1;
 }
 
-SetColorListSearch(playerid, search[]) {
+SetColorListSearch(playerid, const search[]) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_COLORLIST_TEXTURE, TDMODE_COLORLIST_FONTFACE, TDMODE_COLORLIST_FONTBACK, TDMODE_COLORLIST_ATTACH_1, TDMODE_COLORLIST_ATTACH_2: {
             strpack(g_ModelColorListData[playerid][COLORLIST_DATA_SEARCH], search, MAX_SEARCH_LEN+1);

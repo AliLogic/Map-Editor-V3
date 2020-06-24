@@ -252,7 +252,7 @@ IsVehicleOccupied(vehicleid, seat) {
     return 0;
 }
 
-FindVehicles(result[], result_size, search[], offset, &max_offset) {
+FindVehicles(result[], result_size, const search[], offset, &max_offset) {
     new
         rows_found,
         rows_added,

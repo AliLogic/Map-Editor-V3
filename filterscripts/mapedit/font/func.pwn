@@ -7,7 +7,7 @@ GetFontName(fontid, name[], name_size) {
     return 1;
 }
 
-FindFonts(result[], result_size, search[], offset, &max_offset) {
+FindFonts(result[], result_size, const search[], offset, &max_offset) {
     new rows_added;
 
     if( isempty(search) ) {

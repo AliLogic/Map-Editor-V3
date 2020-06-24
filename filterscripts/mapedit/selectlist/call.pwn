@@ -374,7 +374,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                             Float: sphere_off_z
                         ;
 
-						GetObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
+						GetDynamicObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
 						GetObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
                         GetModelSphere(GetObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);
 
@@ -426,7 +426,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                             Float:sphere_off_z
                         ;
 
-                        GetObjectPos(objectid, obj_x,  obj_y,  obj_z);
+                        GetDynamicObjectPos(objectid, obj_x,  obj_y,  obj_z);
                         GetObjectRot(objectid, obj_rx, obj_ry, obj_rz);
 
                         GetModelSphere(GetObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);

@@ -369,7 +369,7 @@ GetCreateListSearch(playerid, search[], search_size) {
     return 1;
 }
 
-SetCreateListSearch(playerid, search[]) {
+SetCreateListSearch(playerid, const search[]) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_CREATELIST_OBJECT: {
             strpack(g_CreateObjListData    [playerid][CREATELIST_DATA_SEARCH], search, MAX_SEARCH_LEN+1);

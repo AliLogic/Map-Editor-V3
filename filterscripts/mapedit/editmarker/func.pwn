@@ -109,7 +109,7 @@ RefreshPlayerEditMarker(playerid) {
                     Float: obj_rz
 				;
 
-				GetObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
+				GetDynamicObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
 				GetObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
                 attach_off_x = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X];
                 attach_off_y = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y];
@@ -121,7 +121,7 @@ RefreshPlayerEditMarker(playerid) {
                 attach_off_y = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y];
                 attach_off_z = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Z];
             } else {
-                GetObjectPos(objectid, x, y, z);
+                GetDynamicObjectPos(objectid, x, y, z);
             }
         }
         case ID_TYPE_VEHICLE: {

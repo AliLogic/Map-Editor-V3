@@ -127,7 +127,7 @@ CopyPickup(copy_pickupid) {
     return paste_pickupid;
 }
 
-FindPickups(result[], result_size, search[], offset, &max_offset) {
+FindPickups(result[], result_size, const search[], offset, &max_offset) {
     new
         rows_found,
         rows_added,

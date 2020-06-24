@@ -141,22 +141,22 @@ stock h_DestroyPlayerObject(playerid, objectid) {
 #define DestroyPlayerObject h_DestroyPlayerObject
 
 
-stock h_SetObjectMaterial(objectid, materialindex, modelid, txdname[], texturename[], materialcolor) {
-    new success = SetObjectMaterial(objectid, materialindex, modelid, txdname, texturename, materialcolor);
+stock h_SetDynamicObjectMaterial(objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor) {
+    new success = SetDynamicObjectMaterial(objectid, materialindex, modelid, txdname, texturename, materialcolor);
     if( success ) {
         g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_MODCOUNT] ++;
     }
     return success;
 }
-#if defined _ALS_SetObjectMaterial
-    #undef SetObjectMaterial
+#if defined _ALS_SetDynamicObjectMaterial
+    #undef SetDynamicObjectMaterial
 #else
-    #define _ALS_SetObjectMaterial
+    #define _ALS_SetDynamicObjectMaterial
 #endif
-#define SetObjectMaterial h_SetObjectMaterial
+#define SetDynamicObjectMaterial h_SetDynamicObjectMaterial
 
 
-stock h_SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdname[], texturename[], materialcolor) {
+stock h_SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, const txdname[], const texturename[], materialcolor) {
     SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdname, texturename, materialcolor);
     if( IsValidPlayerObject(playerid, objectid) ) {
         g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_MODCOUNT] ++;
@@ -170,22 +170,22 @@ stock h_SetPlayerObjectMaterial(playerid, objectid, materialindex, modelid, txdn
 #define SetPlayerObjectMaterial h_SetPlayerObjectMaterial
 
 
-stock h_SetObjectMaterialText(objectid, text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0) {
-    new success = SetObjectMaterialText(objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
+stock h_SetDynObjectMaterialText(objectid, materialindex = 0, const text[], materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0) {
+    new success = SetDynamicObjectMaterialText(objectid, materialindex, text, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
     if( success ) {
         g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_MODCOUNT] ++;
     }
     return success;
 }
-#if defined _ALS_SetObjectMaterialText
-    #undef SetObjectMaterialText
+#if defined _ALS_SetDynObjectMaterialText
+    #undef SetDynamicObjectMaterialText
 #else
-    #define _ALS_SetObjectMaterialText
+    #define _ALS_SetDynObjectMaterialText
 #endif
-#define SetObjectMaterialText h_SetObjectMaterialText
+#define SetDynamicObjectMaterialText h_SetDynObjectMaterialText
 
 
-stock h_SetPlayerObjectMaterialText(playerid, objectid, text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0) {
+stock h_SetPlayerObjectMaterialText(playerid, objectid, const text[], materialindex = 0, materialsize = OBJECT_MATERIAL_SIZE_256x128, const fontface[] = "Arial", fontsize = 24, bold = 1, fontcolor = 0xFFFFFFFF, backcolor = 0, textalignment = 0) {
     SetPlayerObjectMaterialText(playerid, objectid, text, materialindex, materialsize, fontface, fontsize, bold, fontcolor, backcolor, textalignment);
     if( IsValidPlayerObject(playerid, objectid) ) {
         g_ObjectData[objectid-1][OBJECT_DATA_MATINDEX_MODCOUNT] ++;
