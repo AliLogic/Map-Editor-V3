@@ -153,7 +153,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
     }
 
     new
-               modelid = GetObjectModel(copy_objectid),
+        modelid = GetDynamicObjectModel(copy_objectid),
         Float: x,
         Float: y,
         Float: z,
@@ -192,7 +192,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
 
         if( isvalid_attachto_object ) {
             GetDynamicObjectPos(attachtoid, att_x,  att_y,  att_z);
-            GetObjectRot(attachtoid, att_rx, att_ry, att_rz);
+            GetDynamicObjectRot(attachtoid, att_rx, att_ry, att_rz);
         } else if( isvalid_attachto_vehicle ) {
             GetVehiclePos(attachtoid, att_x, att_y, att_z);
             GetVehicleZAngle(attachtoid, att_rz);
@@ -225,7 +225,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
         rz = att_rz + off_rz;
     } else {
         GetDynamicObjectPos(copy_objectid, x, y, z);
-        GetObjectRot(copy_objectid, rx, ry, rz);
+        GetDynamicObjectRot(copy_objectid, rx, ry, rz);
     }
 
     new paste_objectid = CreateDynamicObject(modelid, x, y, z, rx, ry, rz);
@@ -428,7 +428,7 @@ ShowObjectDialog(playerid, dialogid) {
                         strcat(g_DialogInfo, g_DialogInfoRow);
                     }
                     case LISTITEM_OBJECT_COMMENT_RESET: {
-                        GetModelName(GetObjectModel(objectid), g_ModelString, sizeof g_ModelString);
+                        GetModelName(GetDynamicObjectModel(objectid), g_ModelString, sizeof g_ModelString);
                         format(g_DialogInfoRow, sizeof g_DialogInfoRow, "Reset Comment To\t%s\n", g_ModelString);
                         strcat(g_DialogInfo, g_DialogInfoRow);
                     }
@@ -633,7 +633,7 @@ ShowObjectDialog(playerid, dialogid) {
             new Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz;
             if( g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] == ID_TYPE_NONE ) {
                 GetDynamicObjectPos(objectid, x, y, z);
-                GetObjectRot(objectid, rx, ry, rz);
+                GetDynamicObjectRot(objectid, rx, ry, rz);
             } else {
                 x = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X];
                 y = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y];
@@ -759,7 +759,7 @@ FindObjects(result[], result_size, const search[], offset, &max_offset) {
             continue;
         }
 
-        modelid = GetObjectModel(objectid);
+        modelid = GetDynamicObjectModel(objectid);
         cache_index = GetModelCacheIndex(modelid);
 
         if(

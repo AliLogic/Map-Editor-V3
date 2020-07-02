@@ -4,7 +4,7 @@ public OnFilterScriptInit() {
             continue;
         }
 
-        if( GetModelName(GetObjectModel(objectid), g_CommentString, sizeof g_CommentString) ) {
+        if( GetModelName(GetDynamicObjectModel(objectid), g_CommentString, sizeof g_CommentString) ) {
             strpack(g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], g_CommentString, sizeof g_CommentString); // Set Object Comment
         }
 
@@ -127,7 +127,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 case LISTITEM_OBJECT_MOVE: {
                     if( g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] == ID_TYPE_NONE ) {
                         GetDynamicObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
-                        GetObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
+                        GetDynamicObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
 
                         EditObject(playerid, objectid);
 
@@ -204,7 +204,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     return ShowObjectDialog(playerid, DIALOGID_OBJECT_COMMENT), 1;
                 }
                 case LISTITEM_OBJECT_COMMENT_RESET: {
-                    GetModelName(GetObjectModel(objectid), g_CommentString, sizeof g_CommentString);
+                    GetModelName(GetDynamicObjectModel(objectid), g_CommentString, sizeof g_CommentString);
                     strpack(g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], g_CommentString, MAX_COMMENT_LEN+1); // Set Object Comment
                 }
                 case LISTITEM_OBJECT_INDEX_START..LISTITEM_OBJECT_INDEX_END: {
@@ -242,7 +242,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 }
                 default: {
                     GetDynamicObjectPos(objectid, x, y, z);
-                    GetObjectRot(objectid, rx, ry, rz);
+                    GetDynamicObjectRot(objectid, rx, ry, rz);
                 }
             }
 

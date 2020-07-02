@@ -13,7 +13,7 @@ RefreshPlayerEditMarker(playerid) {
         case ID_TYPE_OBJECT: {
             objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_ID];
             if( IsValidDynamicObject(objectid) ) {
-                modelid = GetObjectModel(objectid);
+                modelid = GetDynamicObjectModel(objectid);
                 untoggle = false;
             }
         }
@@ -110,7 +110,7 @@ RefreshPlayerEditMarker(playerid) {
 				;
 
 				GetDynamicObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
-				GetObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
+				GetDynamicObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
                 attach_off_x = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X];
                 attach_off_y = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y];
                 attach_off_z = g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Z];

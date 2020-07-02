@@ -638,7 +638,7 @@ ApplySelectListRowData(playerid, row) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_SELECTLIST_OBJECT: {
             format(id_str, sizeof id_str, "%i", objectid);
-            format(modelid_str, sizeof modelid_str, "%i", GetObjectModel(objectid));
+            format(modelid_str, sizeof modelid_str, "%i", GetDynamicObjectModel(objectid));
             strunpack(g_CommentString, g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], sizeof g_CommentString);
         }
         case TDMODE_SELECTLIST_VEHICLE: {

@@ -114,12 +114,12 @@ SaveMap(
         ;
 
         GetDynamicObjectPos(objectid, x, y, z);
-        GetObjectRot(objectid, rx, ry, rz);
+        GetDynamicObjectRot(objectid, rx, ry, rz);
         strunpack(g_CommentString, g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], MAX_COMMENT_LEN+1);
 
         format(write_string, sizeof write_string,
             "g_Object[%i] = CreateObject(%i, %.4f, %.4f, %.4f, %.4f, %.4f, %.4f); //%s\r\n",
-            o, GetObjectModel(objectid), x, y, z, rx, ry, rz, g_CommentString
+            o, GetDynamicObjectModel(objectid), x, y, z, rx, ry, rz, g_CommentString
         );
         fwrite(file_handle, write_string);
 

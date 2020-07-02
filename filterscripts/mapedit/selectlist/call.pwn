@@ -375,8 +375,8 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                         ;
 
 						GetDynamicObjectPos(attachto_objectid, obj_x,  obj_y,  obj_z);
-						GetObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
-                        GetModelSphere(GetObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);
+						GetDynamicObjectRot(attachto_objectid, obj_rx, obj_ry, obj_rz);
+                        GetModelSphere(GetDynamicObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);
 
                         PositionFromOffset(
 							obj_x,
@@ -427,9 +427,9 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                         ;
 
                         GetDynamicObjectPos(objectid, obj_x,  obj_y,  obj_z);
-                        GetObjectRot(objectid, obj_rx, obj_ry, obj_rz);
+                        GetDynamicObjectRot(objectid, obj_rx, obj_ry, obj_rz);
 
-                        GetModelSphere(GetObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);
+                        GetModelSphere(GetDynamicObjectModel(objectid), sphere_radius, sphere_off_x, sphere_off_y, sphere_off_z);
 
                         PositionFromOffset(
 							obj_x,
