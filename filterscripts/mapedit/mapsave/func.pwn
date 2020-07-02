@@ -256,7 +256,7 @@ SaveMap(
                 ;
 
                 format(write_string, sizeof write_string,
-                    "AttachObjectToObject(g_Object[%i], g_Object[%i], %.4f, %.4f, %.4f, %.4f, %.4f, %.4f);\r\n", o, attachtoslot,
+                    "AttachDynamicObjectToObject(g_Object[%i], g_Object[%i], %.4f, %.4f, %.4f, %.4f, %.4f, %.4f);\r\n", o, attachtoslot,
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X],
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y],
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Z],

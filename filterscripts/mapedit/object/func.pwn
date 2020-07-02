@@ -119,7 +119,7 @@ ApplyObjectMaterialIndexData(objectid, materialindex) {
 ApplyObjectAttachData(objectid) {
     switch( g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] ) {
         case ID_TYPE_OBJECT: {
-            AttachObjectToObject(objectid,
+            AttachDynamicObjectToObject(objectid,
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_ID],
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X],
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y],
