@@ -37,7 +37,7 @@ public OnPlayerSelectDynamicObject(playerid, objectid, modelid, Float:x, Float:y
     }
 
     #if defined obj_OnPlayerSelectDynObject
-        return obj_OnPlayerSelectDynObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+        return obj_OnPlayerSelectDynObject(playerid, type, objectid, modelid, Float:x, Float:y, Float:z);
     #else
         return 0;
     #endif
@@ -49,16 +49,15 @@ public OnPlayerSelectDynamicObject(playerid, objectid, modelid, Float:x, Float:y
 #endif
 #define OnPlayerSelectDynamicObject obj_OnPlayerSelectDynObject
 #if defined obj_OnPlayerDynSelectObject
-    forward obj_OnPlayerDynSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+    forward obj_OnPlayerDynSelectObject(playerid, type, objectid, modelid, Float:x, Float:y, Float:z);
 #endif
 
-
-public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ) {
-    if( !playerobject && objectid == GetPlayerEditObject(playerid) ) {
-        switch(response) {
+public OnPlayerEditDynamicObject(playerid, objectid, response, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz) {
+    if( objectid == GetPlayerEditObject(playerid) ) {
+        switch (response) {
             case EDIT_RESPONSE_FINAL: {
-                SetDynamicObjectPos(objectid, fX, fY, fZ);
-                SetDynamicObjectRot(objectid, fRotX, fRotY, fRotZ);
+                SetDynamicObjectPos(objectid, x, y, z);
+                SetDynamicObjectRot(objectid, rx, ry, rz);
                 ShowObjectDialog(playerid, DIALOGID_OBJECT_MAIN);
             }
             case EDIT_RESPONSE_CANCEL: {
@@ -67,27 +66,26 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
                 ShowObjectDialog(playerid, DIALOGID_OBJECT_MAIN);
             }
             case EDIT_RESPONSE_UPDATE: {
-                SetDynamicObjectPos(objectid, fX, fY, fZ);
-                SetDynamicObjectRot(objectid, fRotX, fRotY, fRotZ);
+                SetDynamicObjectPos(objectid, x, y, z);
+                SetDynamicObjectRot(objectid, rx, ry, rz);
             }
         }
-
     }
 
     #if defined obj_OnPlayerEditObject
-        return obj_OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+        return obj_OnPlayerEditObject(playerid, objectid, response, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz);
     #else
         return 0;
     #endif
 }
-#if defined _ALS_OnPlayerEditObject
-    #undef OnPlayerEditObject
+#if defined _ALS_OnPlayerEditDynObject
+    #undef OnPlayerEditDynamicObject
 #else
-    #define _ALS_OnPlayerEditObject
+    #define _ALS_OnPlayerEditDynObject
 #endif
-#define OnPlayerEditObject obj_OnPlayerEditObject
-#if defined obj_OnPlayerEditObject
-    forward obj_OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, Float:fY, Float:fZ, Float:fRotX, Float:fRotY, Float:fRotZ);
+#define OnPlayerEditDynamicObject obj_OnPlayerEditDynObject
+#if defined obj_OnPlayerEditDynObject
+    forward obj_OnPlayerEditDynObject(playerid, objectid, response, Float:x, Float:y, Float:z, Float:rx, Float:ry, Float:rz);
 #endif
 
 
@@ -128,7 +126,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                         GetDynamicObjectPos(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_X], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Y], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_Z]);
                         GetDynamicObjectRot(objectid, g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RX], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RY], g_ObjectData[objectid-1][OBJECT_DATA_MEMORY_RZ]);
 
-                        EditObject(playerid, objectid);
+                        EditDynamicObject(playerid, objectid);
 
                         SendClientMessage(playerid, RGBA_ORANGE, "Click & Drag Edit: {FFFFFF}Hold ~k~~PED_SPRINT~ to look around and press ESC to cancel.");
                     } else {
