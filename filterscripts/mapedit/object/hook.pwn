@@ -1,5 +1,5 @@
 stock h_CreateDynamicObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0) {
-    new objectid = CreateDynamicObject(modelid, X, Y, Z, rX, rY, rZ, DrawDistance);
+    new objectid = CreateDynamicObject(modelid, X, Y, Z, rX, rY, rZ, .drawdistance = DrawDistance);
     if(objectid != INVALID_OBJECT_ID) {
         if( GetModelName(modelid, g_CommentString, sizeof g_CommentString) ) {
             strpack(g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], g_CommentString, sizeof g_CommentString);
