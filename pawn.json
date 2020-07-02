@@ -1,8 +1,8 @@
 {
 	"user": "fusez",
 	"repo": "Map-Editor-V3",
-	"entry": "filterscripts/mapedit.pwn",
-	"output": "filterscripts/mapedit.amx",
+	"entry": "filterscripts/mapedit2.pwn",
+	"output": "filterscripts/mapedit2.amx",
 	"dependencies": [
 		"sampctl/samp-stdlib",
 		"maddinat0r/sscanf",

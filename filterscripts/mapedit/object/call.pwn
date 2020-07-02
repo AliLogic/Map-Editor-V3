@@ -28,29 +28,28 @@ public OnFilterScriptInit() {
     forward obj_OnFilterScriptInit();
 #endif
 
-
-public OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ) {
-    if( type == SELECT_OBJECT_GLOBAL_OBJECT && IsValidDynamicObject(objectid) ) {
+public OnPlayerSelectDynamicObject(playerid, objectid, modelid, Float:x, Float:y, Float:z) {
+    if(IsValidDynamicObject(objectid) ) {
         CancelEdit(playerid);
         g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_OBJECT;
         g_PlayerData[playerid][PLAYER_DATA_EDIT_ID] = objectid;
         ShowObjectDialog(playerid, DIALOGID_OBJECT_MAIN);
     }
 
-    #if defined obj_OnPlayerSelectObject
-        return obj_OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+    #if defined obj_OnPlayerSelectDynObject
+        return obj_OnPlayerSelectDynObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
     #else
         return 0;
     #endif
 }
-#if defined _ALS_OnPlayerSelectObject
-    #undef OnPlayerSelectObject
+#if defined _ALS_OnPlayerSelectDynObject
+    #undef OnPlayerSelectDynamicObject
 #else
-    #define _ALS_OnPlayerSelectObject
+    #define _ALS_OnPlayerSelectDynObject
 #endif
-#define OnPlayerSelectObject obj_OnPlayerSelectObject
-#if defined obj_OnPlayerSelectObject
-    forward obj_OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
+#define OnPlayerSelectDynamicObject obj_OnPlayerSelectDynObject
+#if defined obj_OnPlayerDynSelectObject
+    forward obj_OnPlayerDynSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ);
 #endif
 
 
