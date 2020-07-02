@@ -263,7 +263,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
             switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
                 case TDMODE_SELECTLIST_OBJECT: {
                     objectid = g_SelectObjListData[playerid][SELECTLIST_DATA_ROW_ID][row];
-                    if( !IsValidObject(objectid) ) {
+                    if( !IsValidDynamicObject(objectid) ) {
                         return 1;
                     }
                 }
@@ -357,7 +357,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                         attachto_vehicleid = GetObjectAttachVehicle(objectid)
                     ;
 
-                    if( IsValidObject(attachto_objectid) ) {
+                    if( IsValidDynamicObject(attachto_objectid) ) {
                         new
                             Float: obj_x,
                             Float: obj_y,

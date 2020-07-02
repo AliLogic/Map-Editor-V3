@@ -143,7 +143,7 @@ public OnOffsetEditUpdate() {
         }
 
         new objectid = GetPlayerEditObject(playerid);
-        if( !IsValidObject(objectid) ) {
+        if( !IsValidDynamicObject(objectid) ) {
             ToggleOffsetEdit(playerid, false);
             continue;
         }

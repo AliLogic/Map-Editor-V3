@@ -12,7 +12,7 @@ RefreshPlayerEditMarker(playerid) {
     switch( g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] ) {
         case ID_TYPE_OBJECT: {
             objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_ID];
-            if( IsValidObject(objectid) ) {
+            if( IsValidDynamicObject(objectid) ) {
                 modelid = GetObjectModel(objectid);
                 untoggle = false;
             }
@@ -99,7 +99,7 @@ RefreshPlayerEditMarker(playerid) {
             attachto_objectid = GetObjectAttachObject(objectid);
             attachto_vehicleid = GetObjectAttachVehicle(objectid);
 
-            if( IsValidObject(attachto_objectid) ) {
+            if( IsValidDynamicObject(attachto_objectid) ) {
                 new
                     Float: obj_x,
                     Float: obj_y,

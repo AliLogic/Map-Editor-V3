@@ -211,7 +211,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 }
                 case LISTITEM_VEHICLE_ATTACH: {
                     new objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_ATTACHOBJECT];
-                    if( IsValidObject(objectid) ) {
+                    if( IsValidDynamicObject(objectid) ) {
                         g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_IDTYPE] = ID_TYPE_VEHICLE;
                         g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_ID] = vehicleid;
                         ApplyObjectAttachData(objectid);

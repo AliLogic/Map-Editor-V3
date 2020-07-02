@@ -258,7 +258,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
             }
 
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 

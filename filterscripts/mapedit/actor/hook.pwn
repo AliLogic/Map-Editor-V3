@@ -1,5 +1,5 @@
-stock hook_CreateActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation) {
-    new actorid = CreateActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation);
+stock hook_CreateDynamicActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation) {
+    new actorid = CreateDynamicActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation);
     if( actorid != INVALID_ACTOR_ID ) {
         g_ActorData[actorid][ACTOR_DATA_SKIN] = modelid;
 
@@ -11,12 +11,12 @@ stock hook_CreateActor(modelid, Float:X, Float:Y, Float:Z, Float:Rotation) {
     }
     return actorid;
 }
-#if defined _ALS_CreateActor
-    #undef CreateActor
+#if defined _ALS_CreateDynamicActor
+    #undef CreateDynamicActor
 #else
-    #define _ALS_CreateActor
+    #define _ALS_CreateDynamicActor
 #endif
-#define CreateActor hook_CreateActor
+#define CreateDynamicActor hook_CreateDynamicActor
 
 
 stock hook_DestroyActor(actorid) {

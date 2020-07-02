@@ -57,7 +57,7 @@ GetPlayerNearestObject(playerid, Float:max_distance) {
     ;
 
     for(new objectid = 1, Float:x, Float:y, Float:z, Float:distance; objectid <= MAX_OBJECTS; objectid ++) {
-        if( !IsValidObject(objectid) ) {
+        if( !IsValidDynamicObject(objectid) ) {
             continue;
         }
 

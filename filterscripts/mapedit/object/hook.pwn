@@ -1,5 +1,5 @@
-stock h_CreateObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0) {
-    new objectid = CreateObject(modelid, X, Y, Z, rX, rY, rZ, DrawDistance);
+stock h_CreateDynamicObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0) {
+    new objectid = CreateDynamicObject(modelid, X, Y, Z, rX, rY, rZ, DrawDistance);
     if(objectid != INVALID_OBJECT_ID) {
         if( GetModelName(modelid, g_CommentString, sizeof g_CommentString) ) {
             strpack(g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], g_CommentString, sizeof g_CommentString);
@@ -20,12 +20,12 @@ stock h_CreateObject(modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Flo
     }
     return objectid;
 }
-#if defined _ALS_CreateObject
-    #undef CreateObject
+#if defined _ALS_CreateDynamicObject
+    #undef CreateDynamicObject
 #else
-    #define _ALS_CreateObject
+    #define _ALS_CreateDynamicObject
 #endif
-#define CreateObject h_CreateObject
+#define CreateDynamicObject h_CreateDynamicObject
 
 
 stock h_CreatePlayerObject(playerid, modelid, Float:X, Float:Y, Float:Z, Float:rX, Float:rY, Float:rZ, Float:DrawDistance = 0.0) {
@@ -58,11 +58,11 @@ stock h_CreatePlayerObject(playerid, modelid, Float:X, Float:Y, Float:Z, Float:r
 #define CreatePlayerObject h_CreatePlayerObject
 
 
-stock h_DestroyObject(objectid) {
-    new isvalid = IsValidObject(objectid);
+stock h_DestroyDynamicObject(objectid) {
+    new isvalid = IsValidDynamicObject(objectid);
 
-    DestroyObject(objectid);
-    
+    DestroyDynamicObject(objectid);
+        
     if( isvalid ) {
         for(new playerid, max_playerid = GetPlayerPoolSize(); playerid <= max_playerid; playerid ++) {
             if( !IsPlayerConnected(playerid) ) {
@@ -108,18 +108,18 @@ stock h_DestroyObject(objectid) {
 
 
         for(new loop_objectid = 1; loop_objectid <= MAX_OBJECTS; loop_objectid ++) {
-            if( IsValidObject(loop_objectid) && GetObjectAttachObject(loop_objectid) == objectid ) {
-                DestroyObject(loop_objectid);
+            if( IsValidDynamicObject(loop_objectid) && GetObjectAttachObject(loop_objectid) == objectid ) {
+                DestroyDynamicObject(loop_objectid);
             }
         }
     }
 }
-#if defined _ALS_DestroyObject
-    #undef DestroyObject
+#if defined _ALS_DestroyDynamicObject
+    #undef DestroyDynamicObject
 #else
-    #define _ALS_DestroyObject
+    #define _ALS_DestroyDynamicObject
 #endif
-#define DestroyObject h_DestroyObject
+#define DestroyDynamicObject h_DestroyDynamicObject
 
 
 stock h_DestroyPlayerObject(playerid, objectid) {

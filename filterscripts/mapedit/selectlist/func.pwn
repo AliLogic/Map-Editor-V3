@@ -365,7 +365,7 @@ GetSelectListNewEditRow(playerid) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_SELECTLIST_OBJECT: {
             new edit_objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(edit_objectid) ) {
+            if( !IsValidDynamicObject(edit_objectid) ) {
                 return INVALID_ROW;
             }
 
@@ -604,7 +604,7 @@ ApplySelectListRowData(playerid, row) {
     switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
         case TDMODE_SELECTLIST_OBJECT: {
             objectid = g_SelectObjListData[playerid][SELECTLIST_DATA_ROW_ID][row];
-            isvalid = IsValidObject(objectid) ? true : false;
+            isvalid = IsValidDynamicObject(objectid) ? true : false;
         }
         case TDMODE_SELECTLIST_VEHICLE: {
             vehicleid = g_SelectVehListData[playerid][SELECTLIST_DATA_ROW_ID][row];

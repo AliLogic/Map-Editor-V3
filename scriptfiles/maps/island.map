@@ -99,26 +99,26 @@ g_Vehicle[1] = CreateVehicle(539, 2144.8027, 491.5484, 3.9284, 321.8580, 1, 6, -
 g_Vehicle[2] = CreateVehicle(412, 2245.1257, 394.4960, 3.4834, -35.5998, 22, 1, -1); //Voodoo
 g_Pickup[0] = CreatePickup(1242, 1, 2173.5781, 488.1806, 9.8291, -1); //bodyarmour
 g_Pickup[1] = CreatePickup(953, 1, 2143.1523, 498.8263, 4.1184, -1); //CJ_OYSTER
-g_Actor[0] = CreateActor(18, 2110.5754, 522.2066, -0.1202, 0.0000); //Beach Visitor
-g_Actor[1] = CreateActor(251, 2144.1630, 504.7874, 4.1585, 62.7000); //Lifeguard
-ApplyActorAnimation(g_Actor[1], "BEACH", "SITNWAIT_LOOP_W", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[2] = CreateActor(154, 2114.1499, 523.5388, 0.6901, 25.4999); //Beach Visitor
-ApplyActorAnimation(g_Actor[2], "PED", "SWIM_TREAD", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[3] = CreateActor(269, 2172.5209, 490.5905, 9.8733, 57.7999); //Melvin "Big Smoke" H
-ApplyActorAnimation(g_Actor[3], "GANGS", "LEANIDLE", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[4] = CreateActor(271, 2178.2473, 491.9002, 10.1834, -117.6999); //Lance "Ryder" Wilson
-ApplyActorAnimation(g_Actor[4], "TATTOOS", "TAT_SIT_LOOP_P", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[5] = CreateActor(102, 2244.5759, 394.8916, 2.4212, -38.6999); //Balla
-ApplyActorAnimation(g_Actor[5], "PED", "CAR_SIT_PRO", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[6] = CreateActor(104, 2168.3435, 483.0215, 9.4587, -10.9998); //Balla
-ApplyActorAnimation(g_Actor[6], "PED", "WEAPON_CROUCH", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[7] = CreateActor(285, 2056.4631, 359.9328, 23.4263, -50.5000); //S.W.A.T Special Forc
-ApplyActorAnimation(g_Actor[7], "COP_AMBIENT", "COPBROWSE_LOOP", 4.0998, 1, 1, 0, 1, 500);
-g_Actor[8] = CreateActor(285, 2057.6098, 362.1044, 23.8882, -37.9000); //S.W.A.T Special Forc
-ApplyActorAnimation(g_Actor[8], "ON_LOOKERS", "POINT_LOOP", 4.0998, 1, 0, 0, 0, 0);
-g_Actor[9] = CreateActor(285, 2055.4904, 361.2442, 24.0063, -60.7000); //S.W.A.T Special Forc
-ApplyActorAnimation(g_Actor[9], "PED", "WEAPON_CROUCH", 4.0998, 1, 0, 0, 0, 0);
-AttachObjectToVehicle(g_Object[52], g_Vehicle[2], 0.0000, -0.8999, -0.2599, 90.0000, 1.5599, 0.0000);
+g_Actor[0] = CreateDynamicActor(18, 2110.5754, 522.2066, -0.1202, 0.0000); //Beach Visitor
+g_Actor[1] = CreateDynamicActor(251, 2144.1630, 504.7874, 4.1585, 62.7000); //Lifeguard
+ApplyDynamicActorAnimation(g_Actor[1], "BEACH", "SITNWAIT_LOOP_W", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[2] = CreateDynamicActor(154, 2114.1499, 523.5388, 0.6901, 25.4999); //Beach Visitor
+ApplyDynamicActorAnimation(g_Actor[2], "PED", "SWIM_TREAD", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[3] = CreateDynamicActor(269, 2172.5209, 490.5905, 9.8733, 57.7999); //Melvin "Big Smoke" H
+ApplyDynamicActorAnimation(g_Actor[3], "GANGS", "LEANIDLE", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[4] = CreateDynamicActor(271, 2178.2473, 491.9002, 10.1834, -117.6999); //Lance "Ryder" Wilson
+ApplyDynamicActorAnimation(g_Actor[4], "TATTOOS", "TAT_SIT_LOOP_P", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[5] = CreateDynamicActor(102, 2244.5759, 394.8916, 2.4212, -38.6999); //Balla
+ApplyDynamicActorAnimation(g_Actor[5], "PED", "CAR_SIT_PRO", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[6] = CreateDynamicActor(104, 2168.3435, 483.0215, 9.4587, -10.9998); //Balla
+ApplyDynamicActorAnimation(g_Actor[6], "PED", "WEAPON_CROUCH", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[7] = CreateDynamicActor(285, 2056.4631, 359.9328, 23.4263, -50.5000); //S.W.A.T Special Forc
+ApplyDynamicActorAnimation(g_Actor[7], "COP_AMBIENT", "COPBROWSE_LOOP", 4.0998, 1, 1, 0, 1, 500);
+g_Actor[8] = CreateDynamicActor(285, 2057.6098, 362.1044, 23.8882, -37.9000); //S.W.A.T Special Forc
+ApplyDynamicActorAnimation(g_Actor[8], "ON_LOOKERS", "POINT_LOOP", 4.0998, 1, 0, 0, 0, 0);
+g_Actor[9] = CreateDynamicActor(285, 2055.4904, 361.2442, 24.0063, -60.7000); //S.W.A.T Special Forc
+ApplyDynamicActorAnimation(g_Actor[9], "PED", "WEAPON_CROUCH", 4.0998, 1, 0, 0, 0, 0);
+AttachDynamicObjectToVehicle(g_Object[52], g_Vehicle[2], 0.0000, -0.8999, -0.2599, 90.0000, 1.5599, 0.0000);
 SetPlayerAttachedObject(playerid, 0, 18898, 2, 0.1239, 0.0000, -0.0008, 270.0000, 0.0000, 270.0000, 1.0000, 1.0000, 1.0000, 0xFFFFFFFF, 0xFFFFFFFF); // Bandana8 attached to the Head of fusez
 SetPlayerAttachedObject(playerid, 1, 19008, 2, 0.1040, 0.0359, 0.0028, 90.0000, 90.0000, 0.0000, 1.0000, 1.0000, 1.0000, 0xFFFFFFFF, 0xFFFFFFFF); // GlassesType3 attached to the Head of fusez
 SetPlayerAttachedObject(playerid, 2, 372, 6, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 1.0000, 1.0000, 1.0000, 0x96228B22, 0xFFFFFFFF); // tec9 attached to the Right Hand of fusez

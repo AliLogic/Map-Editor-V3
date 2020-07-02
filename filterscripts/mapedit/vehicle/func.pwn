@@ -27,7 +27,7 @@ ShowVehicleDialog(playerid, dialogid) {
                     }
                     case LISTITEM_VEHICLE_ATTACH: {
                         new objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_ATTACHOBJECT];
-                        if( !IsValidObject(objectid) ) {
+                        if( !IsValidDynamicObject(objectid) ) {
                             strcat(g_DialogInfo, " \t \n");
                         } else {
                             strunpack(g_CommentString, g_ObjectData[objectid-1][OBJECT_DATA_COMMENT], MAX_COMMENT_LEN+1);
@@ -201,7 +201,7 @@ CopyVehicleAttachments(from_vehicleid, to_vehicleid) {
     }
 
     for(new loop_objectid = 1; loop_objectid <= MAX_OBJECTS; loop_objectid ++) {
-        if( !IsValidObject(loop_objectid) ) {
+        if( !IsValidDynamicObject(loop_objectid) ) {
             continue;
         }
 
@@ -229,7 +229,7 @@ TransferVehicleAttachments(from_vehicleid, to_vehicleid) {
     }
 
     for(new loop_objectid = 1; loop_objectid <= MAX_OBJECTS; loop_objectid ++) {
-        if( !IsValidObject(loop_objectid) ) {
+        if( !IsValidDynamicObject(loop_objectid) ) {
             continue;
         }
 

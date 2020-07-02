@@ -297,7 +297,7 @@ GetColorListNewAppliedRow(playerid) {
         case TDMODE_COLORLIST_TEXTURE: {
             new objectid = GetPlayerEditObject(playerid);
 
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return INVALID_ROW;
             }
 
@@ -326,7 +326,7 @@ GetColorListNewAppliedRow(playerid) {
         case TDMODE_COLORLIST_FONTFACE: {
             new objectid = GetPlayerEditObject(playerid);
 
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return INVALID_ROW;
             }
 
@@ -355,7 +355,7 @@ GetColorListNewAppliedRow(playerid) {
         case TDMODE_COLORLIST_FONTBACK: {
             new objectid = GetPlayerEditObject(playerid);
 
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return INVALID_ROW;
             }
 

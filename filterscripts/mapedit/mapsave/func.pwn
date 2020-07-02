@@ -48,7 +48,7 @@ SaveMap(
     ;
 
     for(new objectid = 1; objectid <= MAX_OBJECTS; objectid ++) {
-        if(!IsValidObject(objectid)) {
+        if(!IsValidDynamicObject(objectid)) {
             continue;
         }
 
@@ -223,7 +223,7 @@ SaveMap(
         strunpack(g_CommentString, g_ActorData[actorid][ACTOR_DATA_COMMENT], MAX_COMMENT_LEN+1);
 
         format(write_string, sizeof write_string,
-            "g_Actor[%i] = CreateActor(%i, %.4f, %.4f, %.4f, %.4f); //%s\r\n", a, g_ActorData[actorid][ACTOR_DATA_SKIN], x, y, z, r, g_CommentString
+            "g_Actor[%i] = CreateDynamicActor(%i, %.4f, %.4f, %.4f, %.4f); //%s\r\n", a, g_ActorData[actorid][ACTOR_DATA_SKIN], x, y, z, r, g_CommentString
         );
         fwrite(file_handle, write_string);
 
@@ -233,7 +233,7 @@ SaveMap(
             GetAnimationName(anim_index, lib, MAX_ANIM_LIB+1, name, MAX_ANIM_NAME+1);
 
             format(write_string, sizeof write_string,
-                "ApplyActorAnimation(g_Actor[%i], \"%s\", \"%s\", %.4f, %i, %i, %i, %i, %i);\r\n", a, lib, name,
+                "ApplyDynamicActorAnimation(g_Actor[%i], \"%s\", \"%s\", %.4f, %i, %i, %i, %i, %i);\r\n", a, lib, name,
                 g_ActorData[actorid][ACTOR_DATA_ANIM_DELTA],
                 g_ActorData[actorid][ACTOR_DATA_ANIM_LOOP],
                 g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKX],
@@ -273,7 +273,7 @@ SaveMap(
                 ;
 
                 format(write_string, sizeof write_string,
-                    "AttachObjectToVehicle(g_Object[%i], g_Vehicle[%i], %.4f, %.4f, %.4f, %.4f, %.4f, %.4f);\r\n", o, vehicleslot,
+                    "AttachDynamicObjectToVehicle(g_Object[%i], g_Vehicle[%i], %.4f, %.4f, %.4f, %.4f, %.4f, %.4f);\r\n", o, vehicleslot,
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X],
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y],
                     g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Z],

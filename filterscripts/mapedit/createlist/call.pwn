@@ -403,7 +403,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                 }
                 case TDMODE_CREATELIST_ACTOR: {
                     g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_ACTOR;
-                    g_PlayerData[playerid][PLAYER_DATA_EDIT_ID] = CreateActor(row_modelid, x, y, z, 0.0);
+                    g_PlayerData[playerid][PLAYER_DATA_EDIT_ID] = CreateDynamicActor(row_modelid, x, y, z, 0.0);
 
                     if( g_PlayerData[playerid][PLAYER_DATA_EDIT_ID] != INVALID_ACTOR_ID ) {
                         HidePlayerTextdrawMode(playerid);

@@ -130,7 +130,7 @@ ApplyObjectAttachData(objectid) {
             );
         }
         case ID_TYPE_VEHICLE: {
-            AttachObjectToVehicle(objectid,
+            AttachDynamicObjectToVehicle(objectid,
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_ID],
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_X],
                 g_ObjectData[objectid-1][OBJECT_DATA_ATTACH_Y],
@@ -148,7 +148,7 @@ ApplyObjectAttachData(objectid) {
 }
 
 CopyObject(copy_objectid, bool:copy_attachto = true) {
-    if( !IsValidObject(copy_objectid) ) {
+    if( !IsValidDynamicObject(copy_objectid) ) {
         return INVALID_OBJECT_ID;
     }
 
@@ -167,7 +167,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
 
     switch( g_ObjectData[copy_objectid-1][OBJECT_DATA_ATTACH_IDTYPE] ) {
         case ID_TYPE_OBJECT: {
-            isvalid_attachto_object  = IsValidObject(attachtoid)  ? true : false;
+            isvalid_attachto_object  = IsValidDynamicObject(attachtoid)  ? true : false;
         }
         case ID_TYPE_VEHICLE: {
             isvalid_attachto_vehicle = IsValidVehicle(attachtoid) ? true : false;
@@ -228,7 +228,7 @@ CopyObject(copy_objectid, bool:copy_attachto = true) {
         GetObjectRot(copy_objectid, rx, ry, rz);
     }
 
-    new paste_objectid = CreateObject(modelid, x, y, z, rx, ry, rz);
+    new paste_objectid = CreateDynamicObject(modelid, x, y, z, rx, ry, rz);
     if( paste_objectid == INVALID_OBJECT_ID ) {
         return INVALID_OBJECT_ID;
     }
@@ -294,7 +294,7 @@ RecreateObject(copy_objectid, bool:copy_attachto = true) {
             }
         }
 
-        DestroyObject(copy_objectid);
+        DestroyDynamicObject(copy_objectid);
     }
 
     return paste_objectid;
@@ -302,7 +302,7 @@ RecreateObject(copy_objectid, bool:copy_attachto = true) {
 
 CopyObjectAttachments(from_objectid, to_objectid) {
     for(new loop_objectid = 1; loop_objectid <= MAX_OBJECTS; loop_objectid ++) {
-        if( !IsValidObject(loop_objectid) || loop_objectid == from_objectid || loop_objectid == to_objectid ) {
+        if( !IsValidDynamicObject(loop_objectid) || loop_objectid == from_objectid || loop_objectid == to_objectid ) {
             continue;
         }
 
@@ -325,7 +325,7 @@ CopyObjectAttachments(from_objectid, to_objectid) {
 
 TransferObjectAttachments(from_objectid, to_objectid) {
     for(new loop_objectid = 1; loop_objectid <= MAX_OBJECTS; loop_objectid ++) {
-        if( !IsValidObject(loop_objectid) || loop_objectid == from_objectid || loop_objectid == to_objectid ) {
+        if( !IsValidDynamicObject(loop_objectid) || loop_objectid == from_objectid || loop_objectid == to_objectid ) {
             continue;
         }
 
@@ -340,7 +340,7 @@ ShowObjectDialog(playerid, dialogid) {
     switch( dialogid ) {
         case DIALOGID_OBJECT_MAIN: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -373,7 +373,7 @@ ShowObjectDialog(playerid, dialogid) {
                     }
                     case LISTITEM_OBJECT_ATTACH_APPLY: {
                         new attachobject = g_PlayerData[playerid][PLAYER_DATA_EDIT_ATTACHOBJECT];
-                        if( !IsValidObject(attachobject) || attachobject == objectid ) {
+                        if( !IsValidDynamicObject(attachobject) || attachobject == objectid ) {
                             strcat(g_DialogInfo, " \t \n");
                         } else {
                             strunpack(g_CommentString, g_ObjectData[attachobject-1][OBJECT_DATA_COMMENT], MAX_COMMENT_LEN+1);
@@ -405,7 +405,7 @@ ShowObjectDialog(playerid, dialogid) {
                     }
                     case LISTITEM_OBJECT_MATERIALS_PASTE: {
                         new copy_from_objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_MATERIALOBJ];
-                        if( !IsValidObject(copy_from_objectid) || objectid == copy_from_objectid ) {
+                        if( !IsValidDynamicObject(copy_from_objectid) || objectid == copy_from_objectid ) {
                             strcat(g_DialogInfo, " \t \n");
                         } else {
                             strunpack(g_CommentString, g_ObjectData[copy_from_objectid-1][OBJECT_DATA_COMMENT], MAX_COMMENT_LEN+1);
@@ -475,7 +475,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_OBJECT_INDEX: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -626,7 +626,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_OBJECT_COORD: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -655,7 +655,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_OBJECT_COMMENT: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -677,7 +677,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_OBJECT_TEXT: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -688,7 +688,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_OBJECT_FONTSIZE: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -702,7 +702,7 @@ ShowObjectDialog(playerid, dialogid) {
         }
         case DIALOGID_COLORALPHA_TEXTURE, DIALOGID_COLORALPHA_FONTFACE: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 
@@ -755,7 +755,7 @@ FindObjects(result[], result_size, const search[], offset, &max_offset) {
     strpack(packed_search, search);
 
     for(new objectid = 1, modelid, cache_index; objectid <= MAX_OBJECTS; objectid ++) {
-        if( !IsValidObject(objectid) ) {
+        if( !IsValidDynamicObject(objectid) ) {
             continue;
         }
 

@@ -231,7 +231,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
             }
 
             g_ActorData[actorid][ACTOR_DATA_ANIM_INDEX] = row_anim_idx;
-            ApplyActorAnimationData(actorid);
+            ApplyDynamicActorAnimationData(actorid);
 
             new prev_row = g_AnimListData[playerid][ANIMLIST_DATA_COLORED_ROW];
             if( row != prev_row ) {

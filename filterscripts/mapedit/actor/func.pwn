@@ -163,7 +163,7 @@ DefaultActorAnimationData(actorid) {
     g_ActorData[actorid][ACTOR_DATA_ANIM_TIME] = 0;
 }
 
-ApplyActorAnimationData(actorid) {
+ApplyDynamicActorAnimationData(actorid) {
     new anim_idx = g_ActorData[actorid][ACTOR_DATA_ANIM_INDEX];
     if( anim_idx == INVALID_ANIM_INDEX ) {
         return ClearActorAnimations(actorid), 1;
@@ -171,7 +171,7 @@ ApplyActorAnimationData(actorid) {
 
     GetAnimationName(anim_idx, g_AnimLibString, sizeof g_AnimLibString, g_AnimNameString, sizeof g_AnimNameString);
 
-    ApplyActorAnimation(actorid, g_AnimLibString, g_AnimNameString,
+    ApplyDynamicActorAnimation(actorid, g_AnimLibString, g_AnimNameString,
         g_ActorData[actorid][ACTOR_DATA_ANIM_DELTA],
         g_ActorData[actorid][ACTOR_DATA_ANIM_LOOP],
         g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKX],
@@ -186,7 +186,7 @@ CopyActor(copy_actorid, Float:a) {
     new Float:x, Float:y, Float:z;
     GetActorPos(copy_actorid, x, y, z);
 
-    new paste_actorid = CreateActor(g_ActorData[copy_actorid][ACTOR_DATA_SKIN], x, y, z, a);
+    new paste_actorid = CreateDynamicActor(g_ActorData[copy_actorid][ACTOR_DATA_SKIN], x, y, z, a);
     if( paste_actorid == INVALID_ACTOR_ID ) {
         return INVALID_ACTOR_ID;
     }

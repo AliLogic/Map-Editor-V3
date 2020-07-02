@@ -1,6 +1,6 @@
 public OnFilterScriptInit() {
     for(new objectid = 1; objectid <= MAX_OBJECTS; objectid ++) {
-        if( !IsValidObject(objectid) ) {
+        if( !IsValidDynamicObject(objectid) ) {
             continue;
         }
 
@@ -30,7 +30,7 @@ public OnFilterScriptInit() {
 
 
 public OnPlayerSelectObject(playerid, type, objectid, modelid, Float:fX, Float:fY, Float:fZ) {
-    if( type == SELECT_OBJECT_GLOBAL_OBJECT && IsValidObject(objectid) ) {
+    if( type == SELECT_OBJECT_GLOBAL_OBJECT && IsValidDynamicObject(objectid) ) {
         CancelEdit(playerid);
         g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_OBJECT;
         g_PlayerData[playerid][PLAYER_DATA_EDIT_ID] = objectid;
@@ -97,7 +97,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         case DIALOGID_OBJECT_MAIN: {
             new objectid = GetPlayerEditObject(playerid);
 
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -143,7 +143,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 }
                 case LISTITEM_OBJECT_ATTACH_APPLY: {
                     new attach_objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_ATTACHOBJECT];
-                    if( IsValidObject(attach_objectid) && attach_objectid != objectid ) {
+                    if( IsValidDynamicObject(attach_objectid) && attach_objectid != objectid ) {
                         g_ObjectData[attach_objectid-1][OBJECT_DATA_ATTACH_IDTYPE] = ID_TYPE_OBJECT;
                         g_ObjectData[attach_objectid-1][OBJECT_DATA_ATTACH_ID] = objectid;
 
@@ -165,7 +165,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 }
                 case LISTITEM_OBJECT_MATERIALS_PASTE: {
                     new copy_from_objectid = g_PlayerData[playerid][PLAYER_DATA_EDIT_MATERIALOBJ];
-                    if( IsValidObject(copy_from_objectid) && copy_from_objectid != objectid ) {
+                    if( IsValidDynamicObject(copy_from_objectid) && copy_from_objectid != objectid ) {
                         for(new matidx; matidx < MAX_OBJECT_INDEX; matidx ++) {
                             DefaultObjectMaterialIndexData(objectid, matidx);
                             MigrateObjectMaterialIndexData(copy_from_objectid, objectid, matidx);
@@ -197,7 +197,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                     }
                 }
                 case LISTITEM_OBJECT_REMOVE: {
-                    DestroyObject(objectid);
+                    DestroyDynamicObject(objectid);
                     return 1;
                 }
                 case LISTITEM_OBJECT_COMMENT: {
@@ -217,7 +217,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         case DIALOGID_OBJECT_COORD: {
             new objectid = GetPlayerEditObject(playerid);
 
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -283,7 +283,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_OBJECT_COMMENT: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -297,7 +297,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_OBJECT_INDEX: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -449,7 +449,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_OBJECT_MATSIZE: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -478,7 +478,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_OBJECT_TEXT: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -507,7 +507,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_OBJECT_FONTSIZE: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return g_PlayerData[playerid][PLAYER_DATA_EDIT_IDTYPE] = ID_TYPE_NONE, 1;
             }
 
@@ -546,7 +546,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         }
         case DIALOGID_COLORALPHA_TEXTURE, DIALOGID_COLORALPHA_FONTFACE: {
             new objectid = GetPlayerEditObject(playerid);
-            if( !IsValidObject(objectid) ) {
+            if( !IsValidDynamicObject(objectid) ) {
                 return 1;
             }
 

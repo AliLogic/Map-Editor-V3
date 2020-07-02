@@ -21,8 +21,8 @@ NewMap(
     playerid = INVALID_PLAYER_ID
 ) {
     for(new objectid = 1; objectid <= MAX_OBJECTS; objectid ++) {
-        if( IsValidObject(objectid) ) {
-            DestroyObject(objectid);
+        if( IsValidDynamicObject(objectid) ) {
+            DestroyDynamicObject(objectid);
             objects_removed ++;
         }
     }

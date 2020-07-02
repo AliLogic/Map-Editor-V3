@@ -201,7 +201,7 @@ LoadFontListRowData(playerid) {
 
 GetFontListNewColoredRow(playerid) {
     new objectid = GetPlayerEditObject(playerid);
-    if( !IsValidObject(objectid) ) {
+    if( !IsValidDynamicObject(objectid) ) {
         return INVALID_ROW;
     }
 

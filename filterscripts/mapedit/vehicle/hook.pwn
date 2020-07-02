@@ -57,8 +57,8 @@ stock hook_DestroyVehicle(vehicleid) {
         }
 
         for(new objectid = 1; objectid <= MAX_OBJECTS; objectid ++) {
-            if( IsValidObject(objectid) && GetObjectAttachVehicle(objectid) == vehicleid) {
-                DestroyObject(objectid);
+            if( IsValidDynamicObject(objectid) && GetObjectAttachVehicle(objectid) == vehicleid) {
+                DestroyDynamicObject(objectid);
             }
         }
     }

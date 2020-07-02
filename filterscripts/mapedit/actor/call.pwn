@@ -19,7 +19,7 @@ public OnFilterScriptInit() {
 
 
 public OnActorStreamIn(actorid, forplayerid) {
-    ApplyActorAnimationData(actorid);
+    ApplyDynamicActorAnimationData(actorid);
 
     #if defined act_OnActorStreamIn
         act_OnActorStreamIn(actorid, forplayerid);
@@ -42,7 +42,7 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
     if( playerobject && objectid == g_PlayerData[playerid][PLAYER_DATA_CLICKDRAG_POID] && IsValidActor(actorid) ) {
         switch(response) {
             case EDIT_RESPONSE_FINAL: {
-                SetActorPos(actorid, fX, fY, fZ);
+                SetDynamicActorPos(actorid, fX, fY, fZ);
 
                 new new_actorid = RecreateActor(actorid, fRotZ); // Recreate Actor to apply rotation (SetActorFacingAngle is bugged)
                 if( new_actorid == INVALID_ACTOR_ID ) {
@@ -53,7 +53,7 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
                 ShowActorDialog(playerid, DIALOGID_ACTOR_MAIN);
             }
             case EDIT_RESPONSE_CANCEL: {
-                SetActorPos(actorid, g_ActorData[actorid][ACTOR_DATA_MEMORY_X], g_ActorData[actorid][ACTOR_DATA_MEMORY_Y], g_ActorData[actorid][ACTOR_DATA_MEMORY_Z]);
+                SetDynamicActorPos(actorid, g_ActorData[actorid][ACTOR_DATA_MEMORY_X], g_ActorData[actorid][ACTOR_DATA_MEMORY_Y], g_ActorData[actorid][ACTOR_DATA_MEMORY_Z]);
 
                 new new_actorid = RecreateActor(actorid, g_ActorData[actorid][ACTOR_DATA_MEMORY_A]); // Recreate Actor to apply rotation (SetActorFacingAngle is bugged)
                 if( new_actorid == INVALID_ACTOR_ID ) {
@@ -61,7 +61,7 @@ public OnPlayerEditObject(playerid, playerobject, objectid, response, Float:fX, 
                 }
             }
             case EDIT_RESPONSE_UPDATE: {
-                SetActorPos(actorid, fX, fY, fZ);
+                SetDynamicActorPos(actorid, fX, fY, fZ);
 
                 new new_actorid = RecreateActor(actorid, fRotZ); // Recreate Actor to apply rotation (SetActorFacingAngle is bugged)
                 if( new_actorid == INVALID_ACTOR_ID ) {
@@ -114,7 +114,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 case LISTITEM_ACTOR_GET: {
                     new Float:x, Float:y, Float:z;
                     GetPlayerPos(playerid, x, y, z);
-                    SetActorPos(actorid, x, y, z);
+                    SetDynamicActorPos(actorid, x, y, z);
                 }
                 case LISTITEM_ACTOR_COORD: {
                     return ShowActorDialog(playerid, DIALOGID_ACTOR_COORD), 1;
@@ -165,25 +165,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 }
                 case LISTITEM_ACTOR_ANIM_LOOP: {
                     g_ActorData[actorid][ACTOR_DATA_ANIM_LOOP] = !g_ActorData[actorid][ACTOR_DATA_ANIM_LOOP];
-                    ApplyActorAnimationData(actorid);
+                    ApplyDynamicActorAnimationData(actorid);
                 }
                 case LISTITEM_ACTOR_ANIM_LOCKX: {
                     g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKX] = !g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKX];
-                    ApplyActorAnimationData(actorid);
+                    ApplyDynamicActorAnimationData(actorid);
                 }
                 case LISTITEM_ACTOR_ANIM_LOCKY: {
                     g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKY] = !g_ActorData[actorid][ACTOR_DATA_ANIM_LOCKY];
-                    ApplyActorAnimationData(actorid);
+                    ApplyDynamicActorAnimationData(actorid);
                 }
                 case LISTITEM_ACTOR_ANIM_FREEZE: {
                     g_ActorData[actorid][ACTOR_DATA_ANIM_FREEZE] = !g_ActorData[actorid][ACTOR_DATA_ANIM_FREEZE];
-                    ApplyActorAnimationData(actorid);
+                    ApplyDynamicActorAnimationData(actorid);
                 }
                 case LISTITEM_ACTOR_ANIM_TIME: {
                     return ShowActorDialog(playerid, DIALOGID_ACTOR_ANIM_TIME), 1;
                 }
                 case LISTITEM_ACTOR_ANIM_UPDATE: {
-                    ApplyActorAnimationData(actorid);
+                    ApplyDynamicActorAnimationData(actorid);
                 }
                 case LISTITEM_ACTOR_ANIM_REMOVE: {
                     DefaultActorAnimationData(actorid);
@@ -224,7 +224,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 return ShowActorDialog(playerid, dialogid), 1;
             }
 
-            SetActorPos(actorid, x, y, z);
+            SetDynamicActorPos(actorid, x, y, z);
             SetActorFacingAngle(actorid, a);
             return ShowActorDialog(playerid, dialogid), 1;
         }
@@ -260,7 +260,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 SendClientMessage(playerid, RGBA_RED, "ERROR: You cannot enter a negative value into the textfield!");
             } else {
                 g_ActorData[actorid][ACTOR_DATA_ANIM_DELTA] = delta;
-                ApplyActorAnimationData(actorid);
+                ApplyDynamicActorAnimationData(actorid);
             }
             return ShowActorDialog(playerid, dialogid), 1;
         }
@@ -282,7 +282,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
                 SendClientMessage(playerid, RGBA_RED, "ERROR: You cannot enter a negative value!");
             } else {
                 g_ActorData[actorid][ACTOR_DATA_ANIM_TIME] = time;
-                ApplyActorAnimationData(actorid);
+                ApplyDynamicActorAnimationData(actorid);
             }
             return ShowActorDialog(playerid, dialogid), 1;
         }

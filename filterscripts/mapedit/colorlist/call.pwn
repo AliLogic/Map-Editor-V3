@@ -207,7 +207,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
             switch( g_PlayerData[playerid][PLAYER_DATA_TDMODE] ) {
                 case TDMODE_COLORLIST_TEXTURE: {
                     new objectid = GetPlayerEditObject(playerid);
-                    if( !IsValidObject(objectid) ) {
+                    if( !IsValidDynamicObject(objectid) ) {
                         return 1;
                     }
 
@@ -235,7 +235,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                 }
                 case TDMODE_COLORLIST_FONTFACE: {
                     new objectid = GetPlayerEditObject(playerid);
-                    if( !IsValidObject(objectid) ) {
+                    if( !IsValidDynamicObject(objectid) ) {
                         return 1;
                     }
 
@@ -263,7 +263,7 @@ public OnPlayerClickPlayerTextDraw(playerid, PlayerText:playertextid) {
                 }
                 case TDMODE_COLORLIST_FONTBACK: {
                     new objectid = GetPlayerEditObject(playerid);
-                    if( !IsValidObject(objectid) ) {
+                    if( !IsValidDynamicObject(objectid) ) {
                         return 1;
                     }
 
